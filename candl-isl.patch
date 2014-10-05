@@ -1,0 +1,28 @@
+--- candl-0.6.2/source/dependence.c.orig	2012-03-12 17:19:37.000000000 +0100
++++ candl-0.6.2/source/dependence.c	2014-10-05 13:31:01.296133841 +0200
+@@ -48,7 +48,7 @@
+ 
+ #ifdef CANDL_SUPPORTS_ISL
+ # undef Q // Thank you polylib...
+-# include <isl/int.h>
++# include <isl/deprecated/int.h>
+ # include <isl/constraint.h>
+ # include <isl/ctx.h>
+ # include <isl/set.h>
+--- candl-0.6.2/source/isl-wrapper.c.orig	2012-03-12 17:19:37.000000000 +0100
++++ candl-0.6.2/source/isl-wrapper.c	2014-10-05 13:33:15.439461490 +0200
+@@ -46,12 +46,13 @@
+ # ifdef CANDL_SUPPORTS_ISL
+ 
+ # undef Q
++# include <isl/deprecated/int.h>
+ # include <isl/constraint.h>
++# include <isl/deprecated/constraint_int.h>
+ # include <isl/map.h>
+ # include <isl/map.h>
+ # include <isl/set.h>
+ # include <isl/dim.h>
+-# include <isl/seq.h>
+ # include <isl/ctx.h>
+ 
+ 

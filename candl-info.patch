@@ -1,0 +1,13 @@
+--- candl-0.6.2/doc/candl.texi.orig	2012-03-12 17:19:38.000000000 +0100
++++ candl-0.6.2/doc/candl.texi	2014-10-05 14:06:50.272710340 +0200
+@@ -11,6 +11,10 @@
+ @set UPDATED July 16th 2008
+ @setchapternewpage odd
+ 
++@dircategory Development Tools:
++@direntry
++* candl: (candl).			CAnDL: the Chunky Analyzer for Dependencies in Loops
++@end direntry
+ 
+ @c % /*************************************************************************
+ @c %  *                 PART II: SUMMARY DESCRIPTION AND COPYRIGHT            *
