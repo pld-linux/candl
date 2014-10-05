@@ -2,19 +2,27 @@ Summary:	Candl - Data Dependence Analysis Tool in the Polyhedral Model
 Summary(pl.UTF-8):	Candl - narzędzie do analizy zależności danych w modelu wielościennym
 Name:		candl
 Version:	0.6.2
-Release:	1
+%define	snap	20140806
+Release:	1.%{snap}.1
 License:	LGPL v3+
 Group:		Libraries
 Source0:	http://web.cse.ohio-state.edu/~pouchet/software/pocc/download/modules/%{name}-%{version}.tar.gz
 # Source0-md5:	4e86392fa46a514b03532f93d9c83f8d
-Patch0:		%{name}-isl.patch
-Patch1:		%{name}-info.patch
+# git clone git://repo.or.cz/candl.git
+# git diff 0.6.2
+Patch0:		%{name}-git.patch
+Patch1:		%{name}-isl.patch
+Patch2:		%{name}-info.patch
+Patch3:		%{name}-system-libs.patch
 URL:		http://icps.u-strasbg.fr/people/bastoul/public_html/development/candl/
+BuildRequires:	autoconf >= 2.53
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	gmp-devel
 # 0.12.x originally, 0.13 with isl patch
 BuildRequires:	isl-devel >= 0.13
+BuildRequires:	libtool
+BuildRequires:	osl-devel
 BuildRequires:	piplib-devel
-BuildRequires:	scoplib-devel >= 0.2.1-2
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -34,8 +42,8 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gmp-devel
 Requires:	isl-devel >= 0.13
+Requires:	osl-devel
 Requires:	piplib-devel
-Requires:	scoplib-devel >= 0.2.1-2
 
 %description devel
 Header files for Candl library.
@@ -57,10 +65,24 @@ Statyczna biblioteka Candl.
 
 %prep
 %setup -q
+# clean after make dist to allow git patch
+%{__rm} include/candl/candl.h
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+
+# because of tests subdir stripped from git patch
+> tests/Makefile.am
+
+%{__rm} osl piplib
+install -d osl piplib
 
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__automake}
 %configure \
 	--enable-mp-version \
 	--disable-silent-rules

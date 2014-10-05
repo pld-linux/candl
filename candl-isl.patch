@@ -9,20 +9,19 @@
  # include <isl/constraint.h>
  # include <isl/ctx.h>
  # include <isl/set.h>
---- candl-0.6.2/source/isl-wrapper.c.orig	2012-03-12 17:19:37.000000000 +0100
-+++ candl-0.6.2/source/isl-wrapper.c	2014-10-05 13:33:15.439461490 +0200
-@@ -46,12 +46,13 @@
- # ifdef CANDL_SUPPORTS_ISL
+--- candl-0.6.2/source/isl-wrapper.c.orig	2014-10-05 17:38:33.848843872 +0200
++++ candl-0.6.2/source/isl-wrapper.c	2014-10-05 17:42:57.065499482 +0200
+@@ -47,11 +47,11 @@
  
- # undef Q
-+# include <isl/deprecated/int.h>
- # include <isl/constraint.h>
-+# include <isl/deprecated/constraint_int.h>
- # include <isl/map.h>
- # include <isl/map.h>
- # include <isl/set.h>
- # include <isl/dim.h>
--# include <isl/seq.h>
- # include <isl/ctx.h>
+ #undef Q
+ #include <isl/constraint.h>
+-#include <isl/map.h>
++#include <isl/deprecated/int.h>
++#include <isl/deprecated/constraint_int.h>
+ #include <isl/map.h>
+ #include <isl/set.h>
+ #include <isl/dim.h>
+-#include <isl/seq.h>
+ #include <isl/ctx.h>
  
  
