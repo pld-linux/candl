@@ -4,7 +4,7 @@
  @set UPDATED July 16th 2008
  @setchapternewpage odd
  
-+@dircategory Development Tools:
++@dircategory Programming tools:
 +@direntry
 +* candl: (candl).			CAnDL: the Chunky Analyzer for Dependencies in Loops
 +@end direntry
