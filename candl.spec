@@ -1,7 +1,3 @@
-#
-# Conditional build:
-%bcond_without	static_libs	# don't build static libraries
-#
 Summary:	Candl - Data Dependence Analysis Tool in the Polyhedral Model
 Summary(pl.UTF-8):	Candl - narzędzie do analizy zależności danych w modelu wielościennym
 Name:		candl
