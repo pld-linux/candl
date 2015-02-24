@@ -1,4 +1,4 @@
-%define		rel	1
+%define		rel	2
 Summary:	Candl - Data Dependence Analysis Tool in the Polyhedral Model
 Summary(pl.UTF-8):	Candl - narzędzie do analizy zależności danych w modelu wielościennym
 Name:		candl
