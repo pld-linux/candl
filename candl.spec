@@ -1,9 +1,10 @@
+%define		rel	1
 Summary:	Candl - Data Dependence Analysis Tool in the Polyhedral Model
 Summary(pl.UTF-8):	Candl - narzędzie do analizy zależności danych w modelu wielościennym
 Name:		candl
 Version:	0.6.2
 %define	snap	20140806
-Release:	1.%{snap}.1
+Release:	1.%{snap}.%{rel}
 License:	LGPL v3+
 Group:		Libraries
 Source0:	http://web.cse.ohio-state.edu/~pouchet/software/pocc/download/modules/%{name}-%{version}.tar.gz
