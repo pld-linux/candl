@@ -1,0 +1,74 @@
+diff -Nur candl-0.6.2/ChangeLog candl-0.6.3/ChangeLog
+--- candl-0.6.2/ChangeLog	2012-03-12 17:19:38.000000000 +0100
++++ candl-0.6.3/ChangeLog	2013-02-19 06:27:35.000000000 +0100
+@@ -1,3 +1,11 @@
++2013-02-18  Louis-Noel Pouchet  <pouchet@cs.ucla.edu>
++
++	* configure.ac: Bump to candl-0.6.3.
++
++2012-10-26  Louis-Noel Pouchet  <pouchet@cse.ohio-state.edu>
++
++	* source/dependence.c: Fix 2 bugs in scalar privatization.
++
+ 2012-03-09  Louis-Noel Pouchet  <pouchet@cse.ohio-state.edu>
+ 
+ 	* configure.in: Bump to candl-0.6.2.
+diff -Nur candl-0.6.2/configure.in candl-0.6.3/configure.in
+--- candl-0.6.2/configure.in	2012-03-12 17:45:26.000000000 +0100
++++ candl-0.6.3/configure.in	2013-02-19 06:27:35.000000000 +0100
+@@ -34,7 +34,7 @@
+ 
+ AC_PREREQ(2.13)
+ dnl Fill here the @bug email adress.
+-AC_INIT([candl], [0.6.2], [cedric.bastoul@inria.fr,pouchet@cse.ohio-state.edu])
++AC_INIT([candl], [0.6.3], [cedric.bastoul@inria.fr,pouchet@cs.ucla.edu])
+ dnl A common file, which serve as a test.
+ AC_CONFIG_SRCDIR([include/candl/program.h])
+ dnl Put as most as possible configuration files to an auxialiry
+diff -Nur candl-0.6.2/include/candl/candl.h candl-0.6.3/include/candl/candl.h
+--- candl-0.6.2/include/candl/candl.h	2012-03-12 17:45:37.000000000 +0100
++++ candl-0.6.3/include/candl/candl.h	2013-02-19 06:40:15.000000000 +0100
+@@ -42,7 +42,7 @@
+ #ifndef CANDL_H
+ # define CANDL_H
+ 
+-# define CANDL_RELEASE "0.6.2"
++# define CANDL_RELEASE "0.6.3"
+ # define CANDL_VERSION "64"
+ # define CANDL_SUPPORTS_SCOPLIB
+ # define CANDL_SUPPORTS_ISL
+diff -Nur candl-0.6.2/source/dependence.c candl-0.6.3/source/dependence.c
+--- candl-0.6.2/source/dependence.c	2012-03-12 17:19:37.000000000 +0100
++++ candl-0.6.3/source/dependence.c	2013-02-19 06:27:31.000000000 +0100
+@@ -2261,14 +2261,17 @@
+ 		pred->next = next;
+ 	      free (tmp);
+ 	    }
+-	  pred = tmp;
++	  else
++	    pred = tmp;
+ 	  tmp = next;
+ 
+-	  continue;
+ 	}
+-      /* Go to the next victim. */
+-      pred = tmp;
+-      tmp = tmp->next;
++      else
++	{
++	  /* Go to the next victim. */
++	  pred = tmp;
++	  tmp = tmp->next;
++	}
+     }
+ }
+ 
+@@ -2455,7 +2458,7 @@
+ 			  for (l = 0; l < priv_buff_size; ++l)
+ 			    program->scalars_privatizable[l] = -1;
+ 			}
+-		      if (nb_priv == priv_buff_size)
++		      if (nb_priv == priv_buff_size - 2)
+ 			{
+ 			  program->scalars_privatizable =
+ 			    realloc(program->scalars_privatizable,
