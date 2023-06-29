@@ -2,7 +2,7 @@ Summary:	Candl - Data Dependence Analysis Tool in the Polyhedral Model
 Summary(pl.UTF-8):	Candl - narzędzie do analizy zależności danych w modelu wielościennym
 Name:		candl
 Version:	0.6.3
-Release:	2
+Release:	3
 License:	LGPL v3+
 Group:		Libraries
 #Source0:	http://web.cse.ohio-state.edu/~pouchet/software/pocc/download/modules/%{name}-0.6.2.tar.gz
@@ -12,6 +12,7 @@ Source0:	https://github.com/periscop/candl/archive/%{version}/%{name}-%{version}
 Patch0:		%{name}-piplib.patch
 Patch1:		%{name}-isl.patch
 Patch2:		%{name}-info.patch
+Patch3:		%{name}-opt.patch
 URL:		http://icps.u-strasbg.fr/people/bastoul/public_html/development/candl/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
@@ -66,6 +67,7 @@ Statyczna biblioteka Candl.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}

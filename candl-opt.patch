@@ -1,0 +1,11 @@
+--- candl-0.6.3/m4/ax_cc_maxopt.m4.orig	2022-01-25 14:31:20.000000000 +0100
++++ candl-0.6.3/m4/ax_cc_maxopt.m4	2023-06-29 22:26:57.543834180 +0200
+@@ -65,7 +65,7 @@ AC_ARG_ENABLE(portable-binary, [AC_HELP_
+ 	acx_maxopt_portable=$withval, acx_maxopt_portable=no)
+ 
+ # Try to determine "good" native compiler flags if none specified via CFLAGS
+-if test "$ac_test_CFLAGS" != "set"; then
++if test "x$ac_test_CFLAGS" = "x"; then
+   CFLAGS=""
+   case $ax_cv_c_compiler_vendor in
+     dec) CFLAGS="-newc -w0 -O5 -ansi_alias -ansi_args -fp_reorder -tune host"
