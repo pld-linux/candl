@@ -1,0 +1,11 @@
+--- candl-0.6.3/configure.ac.orig	2022-01-25 14:31:20.000000000 +0100
++++ candl-0.6.3/configure.ac	2023-06-29 21:28:22.113698944 +0200
+@@ -219,7 +219,7 @@ case "$BITS" in
+   PIPLIB_LA="piplib_dp"
+   ;;
+ MP)
+-  PIPLIB_LA="piplib_gmp"
++  PIPLIB_LA="piplibMP"
+   ;;
+ esac
+ 
